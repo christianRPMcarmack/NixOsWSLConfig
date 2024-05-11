@@ -1,13 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    # Include NixOS-WSL modules
-	    <nixos-wsl/modules>
-  ];
-
+  # Normally this would just be your hardware-configuration import #
+  imports = [ <nixos-wsl/modules> ];
   wsl.enable = true;
   wsl.defaultUser = "ccarmack";
+  ##################################################################
 
   system.stateVersion = "23.11";
   
