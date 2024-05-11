@@ -11,6 +11,9 @@
 
   system.stateVersion = "23.11";
   
+  virtualisation.docker.enable = true;
+  users.users."ccarmack".extraGroups = [ "docker" ];
+
   nix.extraOptions = ''experimental-features = nix-command flakes'';
 
   # Add build inputs directly to the environment
@@ -36,11 +39,11 @@
   
   networking.firewall = {
     enable = true;
-    #allowedTCPPorts = [ 80 443 ];
-    #allowedUDPPortRanges = [
-    #  { from = 4000; to = 4007; }
-    #  { from = 8000; to = 8010; }
-    #];
+    allowedTCPPorts = [ 80 443 22 ];
+    allowedUDPPortRanges = [
+      { from = 4000; to = 4007; }
+      { from = 8000; to = 8010; }
+    ];
   };
 
   # Define shell aliases directly in the user environment
